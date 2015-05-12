@@ -1,0 +1,49 @@
+!Package
+Id: d992f851-1b5a-4e88-8de8-c21023012af2
+Tags: []
+Meta:
+    Name: BattleScapesEngine
+    Version: 1.0.0.0
+    Authors: []
+    Owners: []
+    RootNamespace: BattleScapesEngine
+    Dependencies:
+        -   Name: Paradox
+            Version: 1.1.0-beta
+LocalDependencies: []
+Profiles:
+    -   Name: Shared
+        Platform: Shared
+        InheritProfiles: []
+        AssetFolders:
+            -   Path: Assets/Shared
+                RawImports: []
+            -   Path: BattleScapesEngine.Game/Effects
+                RawImports: []
+        OutputGroupDirectories: {}
+        Properties:
+            GameSettingsAsset.BackBufferHeight: 720
+            GameSettingsAsset.BackBufferWidth: 1280
+            GameSettingsAsset.DefaultGraphicsProfile: Level_10_0
+            GameSettingsAsset.DefaultScene: 98ed126e-773c-4ac6-9352-9379204bbf76:MainScene
+            Paradox.DisplayOrientation: LandscapeRight
+        ProjectReferences:
+            -   Id: b483dd0c-fe35-4412-8b53-381ccbdbae9c
+                Location: BattleScapesEngine.Game/BattleScapesEngine.Game.csproj
+                Type: Library
+    -   Name: Windows
+        Platform: Windows
+        InheritProfiles: []
+        AssetFolders:
+            -   Path: Assets/Windows
+                RawImports: []
+        OutputGroupDirectories: {}
+        Properties:
+            Paradox.GraphicsPlatform: Direct3D11
+        ProjectReferences:
+            -   Id: cb2526db-e921-4b56-850b-09c81f6e516c
+                Location: BattleScapesEngine.Windows/BattleScapesEngine.Windows.csproj
+                Type: Executable
+ExplicitFolders: []
+Bundles: []
+TemplateFolders: []
