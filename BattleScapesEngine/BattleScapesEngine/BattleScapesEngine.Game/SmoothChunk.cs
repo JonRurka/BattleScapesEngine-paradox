@@ -7,13 +7,11 @@ using SiliconStudio.Paradox.Engine;
 
 namespace BattleScapesEngine
 {
-    public class TestScript : Script
+    class SmoothChunk : Script
     {
         public override void Start()
         {
             base.Start();
-
-
         }
     }
 }

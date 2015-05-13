@@ -72,11 +72,62 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="IPageController.cs" />
+    <Compile Include="IVoxelBuilder.cs" />
+    <Compile Include="Libnoise\Billow.cs" />
+    <Compile Include="Libnoise\Checkerboard.cs" />
+    <Compile Include="Libnoise\Constant.cs" />
+    <Compile Include="Libnoise\Cylinders.cs" />
+    <Compile Include="Libnoise\FastBillow.cs" />
+    <Compile Include="Libnoise\FastNoise.cs" />
+    <Compile Include="Libnoise\FastNoiseBasis.cs" />
+    <Compile Include="Libnoise\FastRidgedMultifractal.cs" />
+    <Compile Include="Libnoise\FastTurbulence.cs" />
+    <Compile Include="Libnoise\GradientNoiseBasis.cs" />
+    <Compile Include="Libnoise\IModule.cs" />
+    <Compile Include="Libnoise\Math.cs" />
+    <Compile Include="Libnoise\MazGen.cs" />
+    <Compile Include="Libnoise\Models\Cylinder.cs" />
+    <Compile Include="Libnoise\Models\Line.cs" />
+    <Compile Include="Libnoise\Models\Plane.cs" />
+    <Compile Include="Libnoise\Models\Sphere.cs" />
+    <Compile Include="Libnoise\Modfiers\AbsoluteOutput.cs" />
+    <Compile Include="Libnoise\Modfiers\Add.cs" />
+    <Compile Include="Libnoise\Modfiers\BiasOutput.cs" />
+    <Compile Include="Libnoise\Modfiers\Blend.cs" />
+    <Compile Include="Libnoise\Modfiers\ClampOutput.cs" />
+    <Compile Include="Libnoise\Modfiers\CurveOutput.cs" />
+    <Compile Include="Libnoise\Modfiers\DisplaceInput.cs" />
+    <Compile Include="Libnoise\Modfiers\ExponentialOutput.cs" />
+    <Compile Include="Libnoise\Modfiers\InvertInput.cs" />
+    <Compile Include="Libnoise\Modfiers\InvertOutput.cs" />
+    <Compile Include="Libnoise\Modfiers\LargerOutput.cs" />
+    <Compile Include="Libnoise\Modfiers\Multiply.cs" />
+    <Compile Include="Libnoise\Modfiers\Power.cs" />
+    <Compile Include="Libnoise\Modfiers\RotateInput.cs" />
+    <Compile Include="Libnoise\Modfiers\ScaleBiasOutput.cs" />
+    <Compile Include="Libnoise\Modfiers\ScaleInput.cs" />
+    <Compile Include="Libnoise\Modfiers\ScaleOutput.cs" />
+    <Compile Include="Libnoise\Modfiers\Select.cs" />
+    <Compile Include="Libnoise\Modfiers\SmallerOutput.cs" />
+    <Compile Include="Libnoise\Modfiers\Terrace.cs" />
+    <Compile Include="Libnoise\Modfiers\TranslateInput.cs" />
+    <Compile Include="Libnoise\Noise2D.cs" />
+    <Compile Include="Libnoise\Perlin.cs" />
+    <Compile Include="Libnoise\RidgedMultifractal.cs" />
+    <Compile Include="Libnoise\Spheres.cs" />
+    <Compile Include="Libnoise\TerrainModule.cs" />
+    <Compile Include="Libnoise\Turbulence.cs" />
+    <Compile Include="Libnoise\Utils.cs" />
+    <Compile Include="Libnoise\ValueNoiseBasis.cs" />
+    <Compile Include="Libnoise\Voronoi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmoothChunk.cs" />
+    <Compile Include="SmoothVoxelBuilder.cs" />
+    <Compile Include="structures.cs" />
     <Compile Include="TestScript.cs" />
+    <Compile Include="VoxelConversions.cs" />
+    <Compile Include="VoxelSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SiliconStudioPackageProps)" Condition="Exists('$(SiliconStudioPackageProps)')" />
