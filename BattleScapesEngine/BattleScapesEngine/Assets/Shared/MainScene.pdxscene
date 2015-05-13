@@ -25,5 +25,18 @@ Hierarchy:
                     Position: {X: 0, Y: 0, Z: 0}
                     Rotation: {W: 1, X: 0, Y: 0, Z: 0}
                     Scale: {X: 1, Y: 1, Z: 1}
-                    Children: []
+                    Children:
+                        -   Entity: {Id: 94ac26d8-fbdb-496d-a1a7-0cc33a0fb709}
+                            Component: TransformComponent.Key
             Id: 33a89145-9ed8-4d45-b9cc-ce023e2d3b7e
+        -   Name: test
+            Components:
+                ScriptComponent.Key:
+                    Scripts:
+                        - null
+                TransformComponent.Key:
+                    Position: {X: 0, Y: 0.164559811, Z: 0}
+                    Rotation: {W: 1, X: 0, Y: 0, Z: 0}
+                    Scale: {X: 1, Y: 1, Z: 1}
+                    Children: []
+            Id: 94ac26d8-fbdb-496d-a1a7-0cc33a0fb709
