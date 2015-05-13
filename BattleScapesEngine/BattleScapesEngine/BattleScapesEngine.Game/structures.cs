@@ -180,12 +180,12 @@ namespace BattleScapesEngine
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct MeshData
     {
-        public Vector3[] vertices;
+        public Vertex[] vertices;
         public int[] triangles;
         public Vector2[] UVs;
         public Vector2[] UVs2;
         public Vector2[] UVs3;
-        public MeshData(Vector3[] _vertices, int[] _triangles, Vector2[] _UVs)
+        public MeshData(Vertex[] _vertices, int[] _triangles, Vector2[] _UVs)
         {
             vertices = _vertices;
             triangles = _triangles;
@@ -193,7 +193,7 @@ namespace BattleScapesEngine
             UVs2 = null;
             UVs3 = null;
         }
-        public MeshData(Vector3[] _vertices, int[] _triangles, Vector2[] _UVs, Vector2[] _UVs2, Vector2[] _UVs3)
+        public MeshData(Vertex[] _vertices, int[] _triangles, Vector2[] _UVs, Vector2[] _UVs2, Vector2[] _UVs3)
         {
             vertices = _vertices;
             triangles = _triangles;
@@ -236,6 +236,7 @@ namespace BattleScapesEngine
         }
     }
 
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct BlockType
     {
         public BaseType baseType;
@@ -265,10 +266,41 @@ namespace BattleScapesEngine
         }
     }
 
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class Vertex
+    {
+        public Vector3 Position;
+        public Vector3 Normal;
+        public Vector2 TextureCoords;
+
+        public List<Triangle> ConnectedTriangles;
+
+        public Vertex(Vector3 pos)
+        {
+            Position = pos;
+            Normal = Vector3.Zero;
+            ConnectedTriangles = new List<Triangle>();
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class Triangle
+    {
+        public int i1;
+        public int i2;
+        public int i3;
+
+        public Vertex p1;
+        public Vertex p2;
+        public Vertex p3;
+
+        public Vector3 n;
+    }
+
     public enum BaseType
     {
         air,
         solid,
-        prefab
+        model
     }
 }

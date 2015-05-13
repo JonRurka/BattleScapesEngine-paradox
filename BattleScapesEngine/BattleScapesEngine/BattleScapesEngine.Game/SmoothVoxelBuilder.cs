@@ -417,7 +417,7 @@ namespace BattleScapesEngine
 
         public MeshData Render(bool renderOnly)
         {
-            List<Vector3> vertices = new List<Vector3>();
+            List<Vertex> vertices = new List<Vertex>();
             List<int> triangles = new List<int>();
             List<Vector2> UVs = new List<Vector2>();
             if (Initialized)
@@ -480,10 +480,10 @@ namespace BattleScapesEngine
             return new MeshData(vertices.ToArray(), triangles.ToArray(), UVs.ToArray());
         }
 
-        public void RenderBlock(Vector4[] grid, float isoLevel, List<Vector3> vertices, List<int> triangles, List<Vector2> uv, int[] _textureIndex)
+        public void RenderBlock(Vector4[] grid, float isoLevel, List<Vertex> vertices, List<int> triangles, List<Vector2> uv, int[] _textureIndex)
         {
             int cubeIndex = 0;
-            Vector3[] vertList = new Vector3[12];
+            Vertex[] vertList = new Vertex[12];
 
             if (grid[0].W > isoLevel) cubeIndex |= 1;
             if (grid[1].W > isoLevel) cubeIndex |= 2;
@@ -498,29 +498,29 @@ namespace BattleScapesEngine
                 return;
 
             if ((edgeTable[cubeIndex] & 1) != 0)
-                vertList[0] = VertexInterp(isoLevel, grid[0], grid[1]);
+                vertList[0].Position = VertexInterp(isoLevel, grid[0], grid[1]);
             if ((edgeTable[cubeIndex] & 2) != 0)
-                vertList[1] = VertexInterp(isoLevel, grid[1], grid[2]);
+                vertList[1].Position = VertexInterp(isoLevel, grid[1], grid[2]);
             if ((edgeTable[cubeIndex] & 4) != 0)
-                vertList[2] = VertexInterp(isoLevel, grid[2], grid[3]);
+                vertList[2].Position = VertexInterp(isoLevel, grid[2], grid[3]);
             if ((edgeTable[cubeIndex] & 8) != 0)
-                vertList[3] = VertexInterp(isoLevel, grid[3], grid[0]);
+                vertList[3].Position = VertexInterp(isoLevel, grid[3], grid[0]);
             if ((edgeTable[cubeIndex] & 16) != 0)
-                vertList[4] = VertexInterp(isoLevel, grid[4], grid[5]);
+                vertList[4].Position = VertexInterp(isoLevel, grid[4], grid[5]);
             if ((edgeTable[cubeIndex] & 32) != 0)
-                vertList[5] = VertexInterp(isoLevel, grid[5], grid[6]);
+                vertList[5].Position = VertexInterp(isoLevel, grid[5], grid[6]);
             if ((edgeTable[cubeIndex] & 64) != 0)
-                vertList[6] = VertexInterp(isoLevel, grid[6], grid[7]);
+                vertList[6].Position = VertexInterp(isoLevel, grid[6], grid[7]);
             if ((edgeTable[cubeIndex] & 128) != 0)
-                vertList[7] = VertexInterp(isoLevel, grid[7], grid[4]);
+                vertList[7].Position = VertexInterp(isoLevel, grid[7], grid[4]);
             if ((edgeTable[cubeIndex] & 256) != 0)
-                vertList[8] = VertexInterp(isoLevel, grid[0], grid[4]);
+                vertList[8].Position = VertexInterp(isoLevel, grid[0], grid[4]);
             if ((edgeTable[cubeIndex] & 512) != 0)
-                vertList[9] = VertexInterp(isoLevel, grid[1], grid[5]);
+                vertList[9].Position = VertexInterp(isoLevel, grid[1], grid[5]);
             if ((edgeTable[cubeIndex] & 1024) != 0)
-                vertList[10] = VertexInterp(isoLevel, grid[2], grid[6]);
+                vertList[10].Position = VertexInterp(isoLevel, grid[2], grid[6]);
             if ((edgeTable[cubeIndex] & 2048) != 0)
-                vertList[11] = VertexInterp(isoLevel, grid[3], grid[7]);
+                vertList[11].Position = VertexInterp(isoLevel, grid[3], grid[7]);
 
 
             for (int i = 0; triTable[cubeIndex][i] != -1; i += 3)

@@ -72,6 +72,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ChunkController.cs" />
+    <Compile Include="GeometryUtils.cs" />
     <Compile Include="IPageController.cs" />
     <Compile Include="IVoxelBuilder.cs" />
     <Compile Include="Libnoise\Billow.cs" />
@@ -121,10 +123,13 @@
     <Compile Include="Libnoise\Utils.cs" />
     <Compile Include="Libnoise\ValueNoiseBasis.cs" />
     <Compile Include="Libnoise\Voronoi.cs" />
+    <Compile Include="NormalUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SafeDictionary.cs" />
     <Compile Include="SmoothChunk.cs" />
     <Compile Include="SmoothVoxelBuilder.cs" />
     <Compile Include="structures.cs" />
+    <Compile Include="TerrainController.cs" />
     <Compile Include="TestScript.cs" />
     <Compile Include="VoxelConversions.cs" />
     <Compile Include="VoxelSettings.cs" />
