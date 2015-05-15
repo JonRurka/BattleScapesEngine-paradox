@@ -12,8 +12,9 @@ using graphics = SiliconStudio.Paradox.Graphics;
 
 namespace BattleScapesEngine
 {
-    public class SmoothChunk : Script
+    public class SmoothChunk : Script, IChunk
     {
+
         public struct BlockChange
         {
             public Vector3Int position;
@@ -24,12 +25,17 @@ namespace BattleScapesEngine
                 this.type = type;
             }
         }
+        [DataMemberIgnore]
         public Vector3Int ChunkPosition;
+        [DataMemberIgnore]
         public IVoxelBuilder builder;
+        [DataMemberIgnore]
         public SmoothVoxelBuilder BuilderInstance;
+        [DataMemberIgnore]
         public IPageController pageController;
+        [DataMemberIgnore]
         public List<BlockChange> EditQueue;
-        public int disappearDistance = VoxelSettings.radius;
+        public int disappearDistance;
         public int size = 0;
         public int vertSize = 0;
         public int triSize = 0;
@@ -44,28 +50,24 @@ namespace BattleScapesEngine
         ModelComponent _model;
         Material _mat;
 
+        public bool Generated
+        {
+            get { return generated; }
+        }
+
+        [DataMemberIgnore]
+        public IVoxelBuilder Builder
+        {
+            get { return builder; }
+        }
+
         public override void Start()
         {
             base.Start();
             EditQueue = new List<BlockChange>();
             lockObj = new object();
-        }
-
-        public override string Name
-        {
-            get
-            {
-                return base.Name;
-            }
-            set
-            {
-                base.Name = value;
-            }
-        }
-
-        public override string ToString()
-        {
-            return "Terrain Controller";
+            disappearDistance = VoxelSettings.radius;
+            TerrainController.Instance.SceneLogger.Info(Name + " Created.");
         }
 
         public void Init(Vector3Int chunkPos, IPageController pageController)
@@ -74,7 +76,7 @@ namespace BattleScapesEngine
             this.pageController = pageController;
             Entity.Transform.Position = VoxelConversions.ChunkCoordToWorld(chunkPos);
             Entity.Add<ModelComponent>(ModelComponent.Key, _model);
-            _player = TerrainController.Instance.player;
+            //_player = TerrainController.Instance.player;
             _mat = Asset.Load<Material>("materials/smoothChunk");
             createChunkBuilder();
         }

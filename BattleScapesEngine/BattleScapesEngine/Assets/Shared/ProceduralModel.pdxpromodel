@@ -1,0 +1,7 @@
+!ProceduralModelAsset
+Id: 587e9551-d57d-4a4c-b99f-3a774c9a1566
+SerializedVersion: 2
+Tags: []
+Type: !ConeProceduralModel
+    MaterialInstance:
+        Material: e1344f76-3bb1-4c2c-b1e7-30c05fcbccbf:materials/smoothChunk

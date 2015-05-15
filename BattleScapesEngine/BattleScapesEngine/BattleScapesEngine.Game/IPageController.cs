@@ -11,7 +11,8 @@ namespace BattleScapesEngine
         bool BuilderExists(int x, int y, int z);
         bool BuilderGenerated(int x, int y, int z);
         IVoxelBuilder GetBuilder(int x, int y, int z);
+        IChunk GetChunk(int x, int y, int z);
         void UpdateChunk(int x, int y, int z);
-        void AddBlockType(BaseType _baseType, string _name, int[] _textures);
+        void Add(Vector3Int location, IChunk chunk);
     }
 }

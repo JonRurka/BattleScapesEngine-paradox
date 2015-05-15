@@ -6,35 +6,59 @@ using System.Threading.Tasks;
 
 namespace BattleScapesEngine
 {
-    class ChunkController : IPageController
+    public class ChunkController : IPageController
     {
-        TerrainController terrainControll;
+        public SafeDictionary<Vector3Int, IChunk> Chunks;
+
+        public ChunkController()
+        {
+            Chunks = new SafeDictionary<Vector3Int, IChunk>();
+        }
 
         public bool BuilderExists(int x, int y, int z)
         {
-            throw new NotImplementedException();
+            return Chunks.ContainsKey(new Vector3Int(x, y, z));
         }
 
         public bool BuilderGenerated(int x, int y, int z)
         {
-            throw new NotImplementedException();
+            if (BuilderExists(x, y, z))
+                return Chunks[new Vector3Int(x, y, z)].Generated;
+            return false;
         }
 
         public IVoxelBuilder GetBuilder(int x, int y, int z)
         {
-            throw new NotImplementedException();
+            IVoxelBuilder result = null;
+            if (BuilderExists(x, y, z))
+            {
+                result = Chunks[new Vector3Int(x, y, z)].Builder;
+            }
+            return result;
+        }
+
+        public IChunk GetChunk(int x, int y, int z)
+        {
+            IChunk result = null;
+            if (BuilderExists(x, y, z))
+            {
+                result = Chunks[new Vector3Int(x, y, z)];
+            }
+            return result;
         }
 
         public void UpdateChunk(int x, int y, int z)
         {
-            throw new NotImplementedException();
+            if (BuilderExists(x, y, z))
+            {
+                Chunks[new Vector3Int(x, y, z)].Render(true);
+            }
         }
 
-        public void AddBlockType(BaseType _baseType, string _name, int[] _textures)
+        public void Add(Vector3Int location, IChunk chunk)
         {
-            byte index = (byte)TerrainController.blockTypes.Count;
-            TerrainController.blockTypes.Add(index, new BlockType(_baseType, index, _name, _textures));
-            terrainControll.BlocksArray = TerrainController.GetBlockTypeArray(TerrainController.blockTypes.Values);
+            if (!BuilderExists(location.x, location.y, location.z))
+                Chunks.Add(location, chunk);
         }
     }
 }
