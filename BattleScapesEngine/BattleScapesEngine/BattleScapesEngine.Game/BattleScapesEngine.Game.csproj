@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="ChunkController.cs" />
     <Compile Include="GeometryUtils.cs" />
+    <Compile Include="IChunk.cs" />
     <Compile Include="IPageController.cs" />
     <Compile Include="IVoxelBuilder.cs" />
     <Compile Include="Libnoise\Billow.cs" />

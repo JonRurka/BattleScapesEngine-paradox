@@ -1,11 +1,7 @@
 !ProceduralModelAsset
-Id: 14739754-87f4-4787-bd71-2ec5e44cb27b
-SerializedVersion: 1
+Id: 587e9551-d57d-4a4c-b99f-3a774c9a1566
+SerializedVersion: 2
 Tags: []
-Type: !PlaneProceduralModel
-    Size: {X: 1, Y: 1}
-    Tessellation: {X: 1, Y: 1}
-    UVScales: {X: 1, Y: 1}
-    GenerateBackFace: false
+Type: !ConeProceduralModel
     MaterialInstance:
-        Material: bca892e3-6333-4655-8ae6-804bc3a3c12f:materials/Material
+        Material: e1344f76-3bb1-4c2c-b1e7-30c05fcbccbf:materials/smoothChunk
