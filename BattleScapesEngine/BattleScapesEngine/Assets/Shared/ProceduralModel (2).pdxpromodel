@@ -1,0 +1,7 @@
+!ProceduralModelAsset
+Id: 1981b6e9-a9d6-488e-af0a-86f67cd50b03
+SerializedVersion: 1
+Tags: []
+Type: !ConeProceduralModel
+    MaterialInstance:
+        Material: c9f70944-a32a-4860-82ed-01c0f71e6581:materials/Material (2)

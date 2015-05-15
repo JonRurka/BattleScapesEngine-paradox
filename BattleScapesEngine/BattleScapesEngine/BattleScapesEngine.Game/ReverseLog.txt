@@ -1,0 +1,13 @@
+Member BattleScapesEngine.SmoothVoxelBuilder BattleScapesEngine.SmoothChunk::BuilderInstance (type: BattleScapesEngine.SmoothVoxelBuilder) doesn't seem to have a valid serializer.
+System.InvalidOperationException: Member BattleScapesEngine.SmoothVoxelBuilder BattleScapesEngine.SmoothChunk::BuilderInstance (type: BattleScapesEngine.SmoothVoxelBuilder) doesn't seem to have a valid serializer.
+   at SiliconStudio.AssemblyProcessor.Serializers.CecilSerializerContext.ProcessComplexSerializerMembers(TypeReference type, SerializableTypeInfo serializableTypeInfo, String profile)
+   at SiliconStudio.AssemblyProcessor.Serializers.CecilSerializerContext.FindSerializerInfo(TypeReference type, Boolean generic)
+   at SiliconStudio.AssemblyProcessor.Serializers.CecilComplexClassSerializerProcessor.ProcessType(CecilSerializerContext context, TypeDefinition type)
+   at SiliconStudio.AssemblyProcessor.Serializers.CecilComplexClassSerializerProcessor.ProcessSerializers(CecilSerializerContext context)
+   at SiliconStudio.AssemblyProcessor.ComplexSerializerCodeGenerator..ctor(IAssemblyResolver assemblyResolver, AssemblyDefinition assembly)
+   at SiliconStudio.AssemblyProcessor.ComplexSerializerGenerator.GenerateSerializationAssembly(PlatformType platformType, BaseAssemblyResolver assemblyResolver, AssemblyDefinition assembly, String serializationAssemblyLocation, String signKeyFile, List`1 serializatonProjectReferencePaths)
+   at SiliconStudio.AssemblyProcessor.SerializationProcessor.Process(AssemblyProcessorContext context)
+   at SiliconStudio.AssemblyProcessor.AssemblyProcessorApp.Run(AssemblyDefinition& assemblyDefinition, Boolean& readWriteSymbols, Boolean& modified)
+Member BattleScapesEngine.SmoothVoxelBuilder BattleScapesEngine.SmoothChunk::BuilderInstance (type: BattleScapesEngine.SmoothVoxelBuilder) doesn't seem to have a valid serializer.
+
+

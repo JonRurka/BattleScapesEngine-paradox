@@ -1,0 +1,14 @@
+!MaterialAsset
+Id: c9f70944-a32a-4860-82ed-01c0f71e6581
+Tags: []
+Attributes:
+    Diffuse: !MaterialDiffuseMapFeature
+        DiffuseMap: !ComputeTextureColor
+            Texture: 1a5b4d05-9bbe-4319-81ad-ed100aa4ea40:textures/Brick_02
+            Scale: {X: 1, Y: 1}
+            Offset: {X: 0, Y: 0}
+    DiffuseModel: !MaterialDiffuseLambertModelFeature {}
+    Overrides:
+        UVScale: {X: 3, Y: 3}
+Layers: []
+Parameters: {}

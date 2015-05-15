@@ -1,0 +1,13 @@
+!Texture
+Id: 26a90ebe-2279-47d5-bd8c-c57e477e9f47
+Tags: []
+Source: PurpleNebulaComplex_front5.png
+ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}
+Format: Color32Bits
+~Base:
+    Location: --import--
+    Asset: !Texture
+        Id: 00000000-0000-0000-0000-000000000000
+        Tags: []
+        ImporterId: a60986f3-a594-4278-bd9d-68ea172f0558
+        ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}

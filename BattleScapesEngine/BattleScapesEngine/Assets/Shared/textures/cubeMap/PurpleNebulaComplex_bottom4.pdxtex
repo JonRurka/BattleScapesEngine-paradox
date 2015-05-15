@@ -1,0 +1,13 @@
+!Texture
+Id: 7ee7f3b7-6738-4b47-92c6-9d12eb2f4dc4
+Tags: []
+Source: PurpleNebulaComplex_bottom4.png
+ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}
+Format: Color32Bits
+~Base:
+    Location: --import--
+    Asset: !Texture
+        Id: 00000000-0000-0000-0000-000000000000
+        Tags: []
+        ImporterId: a60986f3-a594-4278-bd9d-68ea172f0558
+        ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}

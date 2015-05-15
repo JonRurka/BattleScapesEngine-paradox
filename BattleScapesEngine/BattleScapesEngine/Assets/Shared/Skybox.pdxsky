@@ -1,0 +1,5 @@
+!SkyboxAsset
+Id: d86de300-9ac4-4216-aeab-a73a1a68a4c0
+Tags: []
+Model: !SkyboxCubeMapModel
+    CubeMap: null

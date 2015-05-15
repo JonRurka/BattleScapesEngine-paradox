@@ -1,0 +1,7 @@
+Member BattleScapesEngine.SmoothVoxelBuilder BattleScapesEngine.SmoothChunk::BuilderInstance (type: BattleScapesEngine.SmoothVoxelBuilder) doesn't seem to have a valid serializer.
+System.InvalidOperationException: Member BattleScapesEngine.SmoothVoxelBuilder BattleScapesEngine.SmoothChunk::BuilderInstance (type: BattleScapesEngine.SmoothVoxelBuilder) doesn't seem to have a valid serializer.
+   at SiliconStudio.AssemblyProcessor.Serializers.CecilSerializerContext.ProcessComplexSerializerMembers(TypeReference type, SerializableTypeInfo serializableTypeInfo, String profile)
+   at SiliconStudio.AssemblyProcessor.Serializers.CecilSerializerContext.FindSerializerInfo(TypeReference type, Boolean generic)
+   at SiliconStudio.AssemblyProcessor.Serializers.CecilComplexClassSerializerProcessor.ProcessType(CecilSerializerContext context, TypeDefinition type)
+   at SiliconStudio.AssemblyProcessor.Serializers.CecilComplexClassSerializerProcessor.ProcessSerializers(CecilSerializerContext context)
+   at SiliconStudio.A

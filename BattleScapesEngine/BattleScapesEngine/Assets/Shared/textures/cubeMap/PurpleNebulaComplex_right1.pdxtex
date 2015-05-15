@@ -1,0 +1,13 @@
+!Texture
+Id: 62998a97-7c16-4351-b6e4-efd3e59699d6
+Tags: []
+Source: PurpleNebulaComplex_right1.png
+ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}
+Format: Color32Bits
+~Base:
+    Location: --import--
+    Asset: !Texture
+        Id: 00000000-0000-0000-0000-000000000000
+        Tags: []
+        ImporterId: a60986f3-a594-4278-bd9d-68ea172f0558
+        ColorKeyColor: {R: 255, G: 0, B: 255, A: 255}
