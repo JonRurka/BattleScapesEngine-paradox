@@ -1,6 +1,6 @@
 !ProceduralModelAsset
 Id: 1981b6e9-a9d6-488e-af0a-86f67cd50b03
-SerializedVersion: 1
+SerializedVersion: 2
 Tags: []
 Type: !ConeProceduralModel
     MaterialInstance:

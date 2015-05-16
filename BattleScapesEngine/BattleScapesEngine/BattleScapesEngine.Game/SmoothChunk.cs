@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SiliconStudio.Core;
 using SiliconStudio.Core.Mathematics;
+using SiliconStudio.Core.Serialization.Assets;
 using SiliconStudio.Paradox.Engine;
 using SiliconStudio.Paradox.Rendering;
 using SiliconStudio.Paradox.Graphics;
@@ -12,7 +13,7 @@ using graphics = SiliconStudio.Paradox.Graphics;
 
 namespace BattleScapesEngine
 {
-    public class SmoothChunk : Script, IChunk
+    public class SmoothChunk : AsyncScript, IChunk
     {
 
         public struct BlockChange
@@ -39,6 +40,7 @@ namespace BattleScapesEngine
         public int size = 0;
         public int vertSize = 0;
         public int triSize = 0;
+        public Material mat;
 
         object lockObj;
 
@@ -48,7 +50,6 @@ namespace BattleScapesEngine
 
         Entity _player;
         ModelComponent _model;
-        Material _mat;
 
         public bool Generated
         {
@@ -61,24 +62,49 @@ namespace BattleScapesEngine
             get { return builder; }
         }
 
-        public override void Start()
+        public override async Task Execute()
         {
-            base.Start();
+            //try
+            //{
+
             EditQueue = new List<BlockChange>();
             lockObj = new object();
             disappearDistance = VoxelSettings.radius;
-            TerrainController.Instance.SceneLogger.Info(Name + " Created.");
+
+            while (Game.IsActive)
+            {
+                await Script.NextFrame();
+            }
+            /*}
+            catch(Exception e)
+            {
+                TerrainController.Instance.SceneLogger.Error("{0}", e, e.Message);
+            }*/
+        }
+
+        public void Start()
+        {
+
         }
 
         public void Init(Vector3Int chunkPos, IPageController pageController)
         {
-            ChunkPosition = chunkPos;
-            this.pageController = pageController;
-            Entity.Transform.Position = VoxelConversions.ChunkCoordToWorld(chunkPos);
-            Entity.Add<ModelComponent>(ModelComponent.Key, _model);
-            //_player = TerrainController.Instance.player;
-            _mat = Asset.Load<Material>("materials/smoothChunk");
-            createChunkBuilder();
+            try
+            {
+
+                ChunkPosition = chunkPos;
+                this.pageController = pageController;
+                Entity.Transform.Position = VoxelConversions.ChunkCoordToWorld(chunkPos);
+                Entity.Add<ModelComponent>(ModelComponent.Key, _model);
+                //_player = TerrainController.Instance.player;
+                //_mat = Asset.Load<Material>("smoothChunk");
+                createChunkBuilder();
+            }
+            catch(Exception e)
+            {
+                TerrainController.Instance.SceneLogger.Error("{0}", e, e.Message);
+            }
+
         }
 
         public void createChunkBuilder()
@@ -96,7 +122,9 @@ namespace BattleScapesEngine
         public float[,] GenerateChunk(LibNoise.IModule module)
         {
             float[,] result = null;
-            result = ((SmoothVoxelBuilder)builder).Generate(module,
+            throw new Exception("woo");
+            SmoothVoxelBuilder smoothBuilder = (SmoothVoxelBuilder)builder;
+            result = smoothBuilder.Generate(module,
                                                      VoxelSettings.seed,
                                                      VoxelSettings.enableCaves,
                                                      VoxelSettings.amplitude,
@@ -129,7 +157,7 @@ namespace BattleScapesEngine
             
             Model mod = new Model();
             Mesh mesh = new Mesh();
-            mod.Add(mesh);
+
 
             VertexPositionNormalTexture[] vertexes = new VertexPositionNormalTexture[verts.Length];
             for (int i = 0; i < verts.Length; i++)
@@ -152,8 +180,9 @@ namespace BattleScapesEngine
             };
 
             mesh.Draw = mDraw;
-            mod.Materials.Add(_mat);
+            mod.Materials.Add(mat);
             _model.Model = mod;
+            mod.Add(mesh);
 
 
             /*Mesh mesh = new Mesh();

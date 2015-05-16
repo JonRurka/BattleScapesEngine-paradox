@@ -540,6 +540,7 @@ namespace BattleScapesEngine
         {
             try
             {
+                return SurfaceData;
                 NoiseModule = module;
                 seed = _seed;
                 enableCaves = _enableCaves;
@@ -556,7 +557,7 @@ namespace BattleScapesEngine
                 Vector2Int bottomLeft = new Vector2(location.x * ChunkSizeX, location.z * ChunkSizeZ);
                 Vector2Int topRight = new Vector2(location.x * ChunkSizeX + ChunkSizeX, location.z * ChunkSizeZ + ChunkSizeZ);
 
-                SetSurfaceData(bottomLeft, topRight);
+                //SetSurfaceData(bottomLeft, topRight);
             }
             catch (Exception e)
             {

@@ -45,6 +45,8 @@ Hierarchy:
                             Component: TransformComponent.Key
                         -   Entity: {Id: 5fc7ae6a-3423-49cc-868e-8e3649c0d0b1}
                             Component: TransformComponent.Key
+                        -   Entity: {Id: 6f4e6211-c574-4653-afef-bfd2c20674e4}
+                            Component: TransformComponent.Key
             Id: 33a89145-9ed8-4d45-b9cc-ce023e2d3b7e
         -   Name: Ambient light
             Components:
@@ -61,9 +63,12 @@ Hierarchy:
         -   Name: TerrainControl
             Components:
                 ScriptComponent.Key:
+                    Enabled: false
                     Scripts:
                         - !BattleScapesEngine.TerrainController,BattleScapesEngine.Game
                             Id: 1e4d5c9f-5cd2-47ad-b68f-d2819f9dfe2c
+                            baseChunk:
+                                Id: 6f4e6211-c574-4653-afef-bfd2c20674e4
                             chunksGenerated: 0
                             chunksInQueue: 0
                             player: null
@@ -74,6 +79,23 @@ Hierarchy:
                     Scale: {X: 1, Y: 1, Z: 1}
                     Children: []
             Id: 6565d1f5-a548-44ad-9fdb-875270fbd938
+        -   Name: ChunkOrig
+            Components:
+                ScriptComponent.Key:
+                    Scripts:
+                        - !BattleScapesEngine.SmoothChunk,BattleScapesEngine.Game
+                            Id: d4ce909b-09f8-4457-9120-4d84f489ba92
+                            disappearDistance: 0
+                            mat: e1344f76-3bb1-4c2c-b1e7-30c05fcbccbf:smoothChunk
+                            size: 0
+                            triSize: 0
+                            vertSize: 0
+                TransformComponent.Key:
+                    Position: {X: 0, Y: 0, Z: 0}
+                    Rotation: {W: 1, X: 0, Y: 0, Z: 0}
+                    Scale: {X: 1, Y: 1, Z: 1}
+                    Children: []
+            Id: 6f4e6211-c574-4653-afef-bfd2c20674e4
         -   Name: Camera
             Components:
                 CameraComponent.Key:
