@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using SiliconStudio.Core;
+using SiliconStudio.Core.IO;
 using SiliconStudio.Core.Mathematics;
 using SiliconStudio.Core.Diagnostics;
 using SiliconStudio.Paradox.Engine;
@@ -21,6 +23,7 @@ namespace BattleScapesEngine
         public IPageController pageController;
         public int seed = 0;
         public Entity player;
+        public Entity baseChunk;
         [DataMemberIgnore]
         public Texture[] AllCubeTextures;
         [DataMemberIgnore]
@@ -53,8 +56,17 @@ namespace BattleScapesEngine
             }
             SceneLogger = GlobalLogger.GetLogger("SceneInstance");
             SceneLogger.Info("Terrain Controller started.");
+            SceneLogger.MessageLogged +=SceneLogger_MessageLogged;
             blockTypes = new Dictionary<byte, BlockType>();
             init();
+        }
+
+        private void SceneLogger_MessageLogged(object sender, MessageLoggedEventArgs e)
+        {
+            Stream str = VirtualFileSystem.OpenStream("/roaming/error.txt", VirtualFileMode.Create, VirtualFileAccess.Write);
+            StreamWriter writer = new StreamWriter(str);
+            writer.WriteLine("{0}\n{1}", e.Message.Text, ((LogMessage)e.Message).Exception.StackTrace);
+            writer.Dispose();
         }
 
         public static void Init()
@@ -112,12 +124,15 @@ namespace BattleScapesEngine
         {
             try
             {
-                if (pageController.BuilderExists(location3D.x, location3D.y, location3D.z) && !pageController.BuilderGenerated(location3D.x, location3D.y, location3D.z))
-                {
+                //if (pageController.BuilderExists(location3D.x, location3D.y, location3D.z) && !pageController.BuilderGenerated(location3D.x, location3D.y, location3D.z))
+                //{
                     _generating = true;
+                    SceneLogger.Info("generating chunk.");
                     pageController.GetChunk(location3D.x, location3D.y, location3D.z).GenerateChunk(module);
+                    SceneLogger.Info("rendering chunk");
                     pageController.GetChunk(location3D.x, location3D.y, location3D.z).Render(false);
-                }
+                    SceneLogger.Info("Chunk rendered");
+                //}
             }
             catch (Exception e)
             {
@@ -162,16 +177,23 @@ namespace BattleScapesEngine
         {
             if (!pageController.BuilderExists(location.x, location.y, location.z))
             {
-                SmoothChunk chunkInstance = new SmoothChunk();
+                Entity chunk = baseChunk.Clone();
+                chunk.Name = string.Format("Chunk_{0}.{1}.{2}", location.x, location.y, location.z);
+                ScriptComponent scripts = chunk.Get<ScriptComponent>(ScriptComponent.Key);
+                SmoothChunk chunkScript = (SmoothChunk)scripts.Scripts[0];
+                chunkScript.Init(new Vector3Int(location.x, location.y, location.z), pageController);
+                pageController.Add(location, chunkScript);
+                /*SmoothChunk chunkInstance = new SmoothChunk();
                 ScriptComponent scriptComp = new ScriptComponent();
                 Entity chunkObj = new Entity();
-                chunkObj.Transform.Parent = Entity.Transform;
+                //chunkObj.Transform.Parent = Entity.Transform;
+                SceneSystem.SceneInstance.Scene.AddChild<Entity>(chunkObj);
                 chunkObj.Name = string.Format("Chunk_{0}.{1}.{2}", location.x, location.y, location.z);
-                chunkObj.Add<ScriptComponent>(ScriptComponent.Key, scriptComp);
-                scriptComp.Scripts.Add(chunkInstance);
-                chunkInstance.Init(new Vector3Int(location.x, location.y, location.z), pageController);
-                pageController.Add(location, chunkInstance);
+                //chunkObj.Add<ScriptComponent>(ScriptComponent.Key, scriptComp);
+                //scriptComp.Scripts.Add(chunkInstance);
                 
+                chunkInstance.Init(new Vector3Int(location.x, location.y, location.z), pageController);
+                pageController.Add(location, chunkInstance);*/
             }
         }
 

@@ -4,4 +4,4 @@ SerializedVersion: 2
 Tags: []
 Type: !ConeProceduralModel
     MaterialInstance:
-        Material: e1344f76-3bb1-4c2c-b1e7-30c05fcbccbf:materials/smoothChunk
+        Material: e1344f76-3bb1-4c2c-b1e7-30c05fcbccbf:smoothChunk
